@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row main-content">
+        <div class="col-sm-3 categories-sidebar">
+            <h2>Categories:</h2>
+            {% for cat in categories %}
+            <a href="{{url_for('show_category',category_id=cat.id)}}">{{cat.name}}</a>
+            <br>
+            {% endfor %}
+            <h3>New Film</h3>
+            {% if category %}
+                <a href="{{url_for('new_film', category_id=category.id)}}">Add Film</a>
+            {% else %}
+                <a href="{{url_for('new_film')}}">Add Film</a>
+            {% endif %}
+        </div>
+        <div class="col-sm-9 content-space">
+            {% block body %}
+            {% endblock %}
+
+        </div>
+    </div>
+    
+{#
+    <div class="row dm">
+            <h2>Categories:</h2>
+    {% for cat in categories %}
+    <a href="{{url_for('show_category',category_id=cat.id)}}">{{cat.name}}</a>
+    <br>
+    {% endfor %}
+    <br>
+
+    <h2>New film</h2>
+    {% if category %}
+        <a href="{{url_for('new_film', category_id=category.id)}}">Add</a>
+    {% else %}
+        <a href="{{url_for('new_film')}}">Add</a>
+    {% endif %}
+    <br>
+    <br>
+
+    {% block body %}
+    {% endblock %}
+</div> #}
+
+
+{% endblock %}
